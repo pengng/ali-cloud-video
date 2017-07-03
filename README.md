@@ -20,7 +20,17 @@ ali.getPlayAuth(videoId, (err, result) => {
 })
 ```
 
-##### constructor(options)
+#### 实例方法
+- [getPlayAuth(videoId, callback)](#getplayauth)
+播放视频前获取播放地址和播放凭证
+- [getUploadAuth(options, callback)](#getuploadauth)
+上传视频前获取上传凭证和上传地址
+- [getUploadImageAuth(options, callback)](#getuploadimageauth)
+上传图片前先获取上传地址和上传凭证
+- [refreshUploadAuth(videoId, callback)](#refreshuploadauth)
+上传凭证失效后需刷新上传凭证
+
+### constructor(options)
 实例化对象
 
 ###### options 对象
@@ -29,29 +39,29 @@ ali.getPlayAuth(videoId, (err, result) => {
 | AccessKeyId | String | 是 | 阿里云颁发给用户的访问服务所用的密钥ID。|
 | AccessKeySecret | String | 是 | AccessKeySecret |
 
-##### getPlayAuth(videoId, callback)
+### getPlayAuth
 播放视频前获取播放地址和播放凭证
 
-###### 传入参数
+##### 传入参数
 | 名称 | 类型 | 必填项 | 描述 |
 | --- | --- | ------ | --- |
 | videoId | String | 是 | 视频ID |
 | callback | Function | 是 | 回调函数 |
 
-###### 返回参数
+##### 返回参数
 | 名称 | 类型 | 描述 |
 | --- | --- | ---- |
 | err | Object | 错误对象 |
 | result | Object | 结果 |
  
-###### result 对象
+##### result 对象
 | 名称 | 类型 | 描述 |
 | --- | --- | ---- |
 | RequestId | String | 请求ID |
 | VideoMeta | Object | 视频Meta信息 |
 | PlayAuth | String | 视频播放凭证 |
 
-###### VideoMeta 对象
+##### VideoMeta 对象
 | 名称 | 类型 | 描述 |
 | --- | --- | ---- |
 | CoverURL | String | 视频封面 |
@@ -61,16 +71,16 @@ ali.getPlayAuth(videoId, (err, result) => {
 | Status | String | 视频状态，Uploading(上传中)，UploadFail(上传失败)，UploadSucc(上传完成)，Transcoding(转码中)，Checking(审核中)，TranscodeFail(转码失败)，Blocked(屏蔽)，Normal(正常) |
 
 
-##### getUploadAuth(options, callback)
+### getUploadAuth
 上传视频前获取上传凭证和上传地址
 
-###### 传入参数
+##### 传入参数
 | 名称 | 类型 | 必填项 | 描述 |
 | --- | --- | ------ | --- |
 | options | Object | 是 | 配置对象 |
 | callback | Function | 是 | 回调函数 |
 
-###### options 对象
+##### options 对象
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | Title | String | 视频标题，长度不超过128个字节，UTF8编码 |
@@ -81,13 +91,13 @@ ali.getPlayAuth(videoId, (err, result) => {
 | CateId | Number | 视频分类ID |
 | Tags | String | 视频标签，单个标签不超过32字节，最多不超过16个标签。多个用逗号分隔，UTF8编码 |
 
-###### 返回参数
+##### 返回参数
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | err | Object | 错误对象 |
 | result | Object | 结果 |
 
-###### result 对象
+##### result 对象
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | RequestId | String | 请求ID |
@@ -95,7 +105,7 @@ ali.getPlayAuth(videoId, (err, result) => {
 | UploadAddress | String | 上传地址 |
 | UploadAuth | String | 上传凭证 |
 
-##### getUploadImageAuth(options, callback)
+### getUploadImageAuth
 上传图片前先获取上传地址和上传凭证
 
 ###### 传入参数
@@ -104,19 +114,19 @@ ali.getPlayAuth(videoId, (err, result) => {
 | options | Object | 是 | 配置对象 |
 | callback | Function | 是 | 回调函数 |
 
-###### options 对象
+##### options 对象
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | ImageType | String | 图片类型，可选值 cover：封面，watermark：水印。默认cover。 |
 | ImageExt | String | 图片文件扩展名，可选值 png，jpg，jpeg，默认 png |
 
-###### 返回参数
+##### 返回参数
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | err | Object | 错误对象 |
 | result | Object | 结果 |
 
-###### result 对象
+##### result 对象
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | RequestId | String | 请求ID |
@@ -124,7 +134,7 @@ ali.getPlayAuth(videoId, (err, result) => {
 | UploadAddress | String | 上传地址 |
 | UploadAuth | String | 上传凭证 |
 
-##### refreshUploadAuth(videoId, callback)
+### refreshUploadAuth
 上传凭证失效后需刷新上传凭证
 
 ###### 传入参数
@@ -133,13 +143,13 @@ ali.getPlayAuth(videoId, (err, result) => {
 | videoId | String | 是 | 视频ID |
 | callback | Function | 是 | 回调函数 |
 
-###### 返回参数
+##### 返回参数
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | err | Object | 错误对象 |
 | result | Object | 结果 |
 
-###### result 对象
+##### result 对象
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | RequestId | String | 请求ID |
