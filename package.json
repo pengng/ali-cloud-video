@@ -1,0 +1,21 @@
+{
+  "name": "ali-cloud-video",
+  "version": "1.0.0",
+  "description": "Ali cloud video on demand SDK",
+  "main": "index.js",
+  "scripts": {},
+  "keywords": [
+    "阿里云",
+    "视频点播",
+    "sdk"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pengng/ali-cloud-video.git"
+  },
+  "author": "pengng",
+  "license": "ISC",
+  "dependencies": {
+    "request-client": "^1.0.0"
+  }
+}
