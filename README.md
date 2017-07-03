@@ -7,26 +7,17 @@ npm install ali-cloud-video -S
 ```
 ```javascript
 const AliCloudVideo = require('ali-cloud-video')
+
 const ali = new AliCloudVideo({
   AccessKeyId: '',
   AccessKeySecret: ''
 })
 
 const videoId = 'e51aa1941e3b46648f4812dbcf5c175d'
-ali.getPlayAuth(videoId, console.log)
-/**
-{
-  "RequestId":"935723BB-3764-4052-9490-1E324EB21362",
-  "VideoMeta":{
-    "CoverURL":"http://video.host.com/snapshot/e51aa1941e3b46648f4812dbcf5c375d00001.jpg?auth_key=",
-    "Status":"Normal",
-    "VideoId":"e51aa1941e3b46648f4812dbcf5c175d",
-    "Duration":1206.3199462890625,
-    "Title":"introduce"
-  },
-  "PlayAuth":"lkIjoxNDYyMjc5NzgyOTU3NzQ5fQ="
-}
-*/
+
+ali.getPlayAuth(videoId, (err, result) => {
+  console.log(result)
+})
 ```
 
 ##### constructor(options)
