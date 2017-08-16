@@ -1,1 +1,1 @@
-module.exports = require('./lib/AliCloudVideo')
+module.exports = require('./lib/sdk')

@@ -1,6 +1,6 @@
 {
   "name": "ali-cloud-video",
-  "version": "1.0.7",
+  "version": "1.0.12",
   "description": "Ali cloud video on demand SDK",
   "main": "index.js",
   "scripts": {},
@@ -17,6 +17,8 @@
   "license": "ISC",
   "dependencies": {
     "ali-oss": "^4.10.0",
+    "chai": "^4.1.1",
+    "request": "^2.81.0",
     "request-client": "^1.0.0"
   }
 }
