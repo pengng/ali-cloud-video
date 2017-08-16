@@ -1,6 +1,6 @@
 {
   "name": "ali-cloud-video",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "Ali cloud video on demand SDK",
   "main": "index.js",
   "scripts": {},

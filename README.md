@@ -119,7 +119,7 @@ ali.getPlayAuth(videoId, (err, result) => {
 | --- | --- | ---- |
 | RequestId | String | 请求ID |
 | VideoBase | Object | 视频基本信息 |
-| PlayInfoList | String | 视频流信息列表 |
+| PlayInfoList | Object | 视频流信息列表 |
 
 #### VideoBase 对象属性
 
@@ -227,7 +227,7 @@ ali.getPlayAuth(videoId, (err, result) => {
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | err | Object | 错误对象 |
-| result | Object | 结果 |
+| videoId | String | 视频Id |
 
 ### getUploadImageAuth
 
