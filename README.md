@@ -22,7 +22,7 @@ ali.getPlayAuth(videoId, (err, result) => {
 
 #### 方法
 
-- [AliCloudVideo(options)](#AliCloudVideo) 构造函数
+- [AliCloudVideo(options)](#alicloudvideo) 构造函数
 - [getPlayAuth(videoId, callback)](#getplayauth)
 播放视频前获取播放地址和播放凭证
 - [getUploadAuth(options, callback)](#getuploadauth)
