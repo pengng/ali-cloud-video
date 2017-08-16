@@ -27,6 +27,8 @@ ali.getPlayAuth(videoId, (err, result) => {
 播放视频前获取播放地址和播放凭证
 - [getUploadAuth(options, callback)](#getuploadauth)
 上传视频前获取上传凭证和上传地址
+- [uploadFile(options, callback)](#uploadfile)
+上传视频文件到视频点播服务器
 - [getUploadImageAuth(options, callback)](#getuploadimageauth)
 上传图片前先获取上传地址和上传凭证
 - [refreshUploadAuth(videoId, callback)](#refreshuploadauth)
@@ -65,14 +67,16 @@ ali.getPlayAuth(videoId, (err, result) => {
 | err | Object | 错误对象 |
 | result | Object | 结果 |
  
-##### result 对象
+#### result 对象
+
 | 名称 | 类型 | 描述 |
 | --- | --- | ---- |
 | RequestId | String | 请求ID |
 | VideoMeta | Object | 视频Meta信息 |
 | PlayAuth | String | 视频播放凭证 |
 
-##### VideoMeta 对象
+#### VideoMeta 对象
+
 | 名称 | 类型 | 描述 |
 | --- | --- | ---- |
 | CoverURL | String | 视频封面 |
@@ -81,19 +85,18 @@ ali.getPlayAuth(videoId, (err, result) => {
 | Title | String | 视频标题 |
 | Status | String | 视频状态，Uploading(上传中)，UploadFail(上传失败)，UploadSucc(上传完成)，Transcoding(转码中)，Checking(审核中)，TranscodeFail(转码失败)，Blocked(屏蔽)，Normal(正常) |
 
-
 ### getUploadAuth
 
 上传视频前获取上传凭证和上传地址
 
-##### 传入参数
+#### 传入参数
 
 | 名称 | 类型 | 必填项 | 描述 |
 | --- | --- | ------ | --- |
 | options | Object | 是 | 配置对象 |
 | callback | Function | 是 | 回调函数 |
 
-##### options 对象
+#### options 对象
 
 | 名称 | 类型 | 必填 | 描述 |
 | --- | --- | --- | --- |
@@ -105,14 +108,14 @@ ali.getPlayAuth(videoId, (err, result) => {
 | CateId | Number | 否 | 视频分类ID，请在“点播控制台-全局设置-分类管理”里编辑或查看分类的ID |
 | Tags | String | 否 | 视频标签，单个标签不超过32字节，最多不超过16个标签。多个用逗号分隔，UTF8编码 |
 
-##### 返回参数
+#### 返回参数
 
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
 | err | Object | 错误对象 |
 | result | Object | 结果 |
 
-##### result 对象
+#### result 对象
 
 | 名称 | 类型 | 描述 |
 | --- | --- | --- |
@@ -124,6 +127,37 @@ ali.getPlayAuth(videoId, (err, result) => {
 > 请注意：
 > - 该接口不会真正上传视频文件，您需要拿到上传凭证和地址后使用上传SDK进行文件上传；
 > - 如果视频上传凭证失效（有效期3600秒），请调用刷新视频上传凭证接口重新获取上传凭证。
+
+### uploadFile
+
+上传视频文件到视频点播服务器。
+
+#### 传入参数
+
+| 名称 | 类型 | 必填项 | 描述 |
+| --- | --- | ------ | --- |
+| options | Object | 是 | 配置对象 |
+| callback | Function | 是 | 回调函数 |
+
+#### options 对象
+
+| 名称 | 类型 | 必填 | 描述 |
+| --- | --- | --- | --- |
+| FilePath | String | 是 | 视频文件的路径。 |
+| Title | String | 否 | 视频标题，长度不超过128个字节，UTF8编码。默认生成为new_video_[timestamp] |
+| FileName | String | 否 | 视频源文件名，必须带扩展名，且扩展名不区分大小写, 支持的扩展名参见[上传概述](https://help.aliyun.com/document_detail/55396.html?spm=5176.doc55407.2.1.xKk4gJ)的限制部分。默认为[Title].mp4 |
+| FileSize | String | 否 | 视频文件大小，单位：字节。 |
+| Description | String | 否 | 视频描述，长度不超过1024个字节，UTF8编码 |
+| CoverUrl | String | 否 | 自定义视频封面URL地址 |
+| CateId | Number | 否 | 视频分类ID，请在“点播控制台-全局设置-分类管理”里编辑或查看分类的ID |
+| Tags | String | 否 | 视频标签，单个标签不超过32字节，最多不超过16个标签。多个用逗号分隔，UTF8编码 |
+
+#### 返回参数
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| err | Object | 错误对象 |
+| result | Object | 结果 |
 
 ### getUploadImageAuth
 
