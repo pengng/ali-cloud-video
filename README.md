@@ -31,6 +31,10 @@ ali.getPlayAuth(videoId, (err, result) => {
 上传视频前获取上传凭证和上传地址
 - [uploadFile(options, callback)](#uploadfile)
 上传视频文件到视频点播服务器
+- [deleteFiles(options, callback)](#deletefiles)
+删除上传的视频文件
+- [getVideoInfo(videoId, callback)](#getvideoinfo)
+获取视频信息
 - [getUploadImageAuth(options, callback)](#getuploadimageauth)
 上传图片前先获取上传地址和上传凭证
 - [refreshUploadAuth(videoId, callback)](#refreshuploadauth)
@@ -228,6 +232,67 @@ ali.getPlayAuth(videoId, (err, result) => {
 | --- | --- | --- |
 | err | Object | 错误对象 |
 | videoId | String | 视频Id |
+
+### deleteFiles
+
+删除上传的视频文件。
+
+#### 传入参数
+
+| 名称 | 类型 | 必填项 | 描述 |
+| --- | --- | ------ | --- |
+| videos | Array | 是 | 视频id数组 |
+| callback | Function | 是 | 回调函数 |
+
+#### 返回参数
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| err | Object | 错误对象 |
+| result | Object | 结果对象 |
+
+### getVideoInfo
+
+获取视频信息。
+
+#### 传入参数
+
+| 名称 | 类型 | 必填项 | 描述 |
+| --- | --- | ------ | --- |
+| videoId | String | 是 | 视频id |
+| callback | Function | 是 | 回调函数 |
+
+#### 返回参数
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| err | Object | 错误对象 |
+| result | Object | 结果对象 |
+
+#### result 对象
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| RequestId | String | 请求ID |
+| Video | String | 视频信息对象 |
+
+#### Video 对象
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| VideoId | String | 视频ID |
+| Title | String | 视频标题 |
+| Description | String | 视频描述 |
+| Duration | Number | 视频时长,单位：秒 |
+| CoverURL | String | 视频封面 |
+| Status | String | 视频状态 |
+| CreationTime | String | 视频创建时间 |
+| Size | Number | 视频体积，单位：Byte |
+| CateId | Number | 视频分类Id |
+| CateName | String | 分类名 |
+| Tags | String | 视频标签，逗号分隔 |
+| Snapshots | Object | 视频截图，子属性`Snapshot`为数组，内容是图片链接 |
+| ModifyTime | String | 视频修改时间 |
 
 ### getUploadImageAuth
 
