@@ -36,7 +36,17 @@ ali.getPlayAuth(videoId, (err, result) => {
 - [getVideoInfo(videoId, callback)](#getvideoinfo)
 获取视频信息
 - [getVideoList(options, callback)](#getvideolist)
-获取视频列表，最多支持获取前5000条
+获取视频信息列表，最多支持获取前5000条
+- [updateVideoInfo(options, callback)](#updatevideoinfo)
+修改视频信息。
+- [addCategory(options, callback)](#addcategory)
+创建视频分类。
+- [getCategories(options, callback)](#getcategories)
+获取视频分类及其子分类。
+- [updateCategory(options, callback)](#updatecategory)
+修改分类
+- [deleteCategory(cateId, callback)](#deletecategory)
+删除分类
 - [getUploadImageAuth(options, callback)](#getuploadimageauth)
 上传图片前先获取上传地址和上传凭证
 - [refreshUploadAuth(videoId, callback)](#refreshuploadauth)
@@ -298,7 +308,7 @@ ali.getPlayAuth(videoId, (err, result) => {
 
 ### getVideoList
 
-获取视频列表。
+获取视频信息列表。
 
 #### 传入参数
 
@@ -351,6 +361,174 @@ ali.getPlayAuth(videoId, (err, result) => {
 | Tags | String | 视频标签，逗号分隔 |
 | Snapshots | Object | 视频截图，子属性`Snapshot`为数组，内容是图片链接 |
 | ModifyTime | String | 视频修改时间 |
+
+### updateVideoInfo
+
+修改视频信息。
+
+> 注意：传入参数则更新相应字段，否则该字段不会被覆盖或更新。
+
+#### 传入参数
+
+| 名称 | 类型 | 必填项 | 描述 |
+| --- | --- | --- | --- |
+| options | Object | 是 | 配置对象 |
+| callback | Function | 是 | 回调函数 |
+
+#### options 对象属性
+
+| 名称 | 类型 | 必填项 | 描述 |
+| --- | --- | --- | --- |
+| VideoId | String | 是 | 视频Id |
+| Title | String | 否 | 视频标题，长度不超过128个字节，UTF8编码 |
+| Description | String | 否 | 视频描述，长度不超过1024个字节，UTF8编码 |
+| CoverURL | String | 否 | 视频封面URL地址 |
+| CateId | String | 否 | 视频分类ID |
+| Tags | String | 否 | 视频标签，单个标签不超过32字节，最多不超过16个标签。多个用逗号分隔，UTF8编码 |
+
+#### 返回参数
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| err | Object | 错误对象 |
+| result | Object | 结果对象 |
+
+#### result 对象
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| RequestId | String | 请求ID |
+
+### addCategory
+
+创建视频分类。最大支持三级分类，每个分类最多支持创建100个子分类。
+
+#### 传入参数
+
+| 名称 | 类型 | 必填项 | 描述 |
+| --- | --- | --- | --- |
+| options | Object | 是 | 配置对象 |
+| callback | Function | 是 | 回调函数 |
+
+#### options 对象属性
+
+| 名称 | 类型 | 必填项 | 描述 |
+| --- | --- | --- | --- |
+| CateName | String | 是 | 分类名称 |
+| ParentId | String | 否 | 父分类ID，若不填，则默认生成一级分类，根节点分类ID为-1 |
+
+#### 返回参数
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| err | Object | 错误对象 |
+| result | Object | 结果对象 |
+
+#### result 对象
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| RequestId | String | 请求ID |
+| Category | Object | 视频分类信息 |
+
+#### Category 对象
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| CateId | Number | 分类ID |
+| ParentId | Number | 父分类Id |
+| CateName | String | 分类名称 |
+| Level | Number | 分类层级 |
+
+### getCategories
+
+获取视频分类及其子分类。
+
+#### 传入参数
+
+| 名称 | 类型 | 必填项 | 描述 |
+| --- | --- | --- | --- |
+| options | Object | 是 | 配置对象 |
+| callback | Function | 是 | 回调函数 |
+
+#### options 对象属性
+
+| 名称 | 类型 | 必填项 | 描述 |
+| --- | --- | --- | --- |
+| CateId | String | 否 | 分类ID，默认为根节点分类ID即-1 |
+| PageNo | String | 否 | 子分类列表页号，默认1 |
+| PageSize | String | 否 | 子分类列表页长，默认10，最大不超过100 |
+
+#### 返回参数
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| err | Object | 错误对象 |
+| result | Object | 结果对象 |
+
+#### result 对象
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| RequestId | String | 请求ID |
+| Category | Object | 视频分类信息 |
+| SubTotal | Number | 子分类总数 |
+| SubCategories | Object | 子分类列表 |
+
+### updateCategory
+
+修改分类。
+
+#### 传入参数
+
+| 名称 | 类型 | 必填项 | 描述 |
+| --- | --- | --- | --- |
+| options | Object | 是 | 配置对象 |
+| callback | Function | 是 | 回调函数 |
+
+#### options 对象属性
+
+| 名称 | 类型 | 必填项 | 描述 |
+| --- | --- | --- | --- |
+| CateId | String | 是 | 分类ID |
+| CateName | String | 是 | 分类名称，不能超过64个字节，UTF8编码 |
+
+#### 返回参数
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| err | Object | 错误对象 |
+| result | Object | 结果对象 |
+
+#### result 对象
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| RequestId | String | 请求ID |
+
+### deleteCategory
+
+删除分类。
+
+#### 传入参数
+
+| 名称 | 类型 | 必填项 | 描述 |
+| --- | --- | --- | --- |
+| cateId | String | 是 | 分类ID |
+| callback | Function | 是 | 回调函数 |
+
+#### 返回参数
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| err | Object | 错误对象 |
+| result | Object | 结果对象 |
+
+#### result 对象
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| RequestId | String | 请求ID |
 
 ### getUploadImageAuth
 
