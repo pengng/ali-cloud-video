@@ -1,4 +1,3 @@
-var expect = require('chai').expect
 var assert = require('assert')
 var AliCloudVideo = require('../lib/sdk')
 
