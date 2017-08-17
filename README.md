@@ -35,6 +35,8 @@ ali.getPlayAuth(videoId, (err, result) => {
 删除上传的视频文件
 - [getVideoInfo(videoId, callback)](#getvideoinfo)
 获取视频信息
+- [getVideoList(options, callback)](#getvideolist)
+获取视频列表，最多支持获取前5000条
 - [getUploadImageAuth(options, callback)](#getuploadimageauth)
 上传图片前先获取上传地址和上传凭证
 - [refreshUploadAuth(videoId, callback)](#refreshuploadauth)
@@ -275,6 +277,62 @@ ali.getPlayAuth(videoId, (err, result) => {
 | --- | --- | --- |
 | RequestId | String | 请求ID |
 | Video | String | 视频信息对象 |
+
+#### Video 对象
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| VideoId | String | 视频ID |
+| Title | String | 视频标题 |
+| Description | String | 视频描述 |
+| Duration | Number | 视频时长,单位：秒 |
+| CoverURL | String | 视频封面 |
+| Status | String | 视频状态 |
+| CreationTime | String | 视频创建时间 |
+| Size | Number | 视频体积，单位：Byte |
+| CateId | Number | 视频分类Id |
+| CateName | String | 分类名 |
+| Tags | String | 视频标签，逗号分隔 |
+| Snapshots | Object | 视频截图，子属性`Snapshot`为数组，内容是图片链接 |
+| ModifyTime | String | 视频修改时间 |
+
+### getVideoList
+
+获取视频列表。
+
+#### 传入参数
+
+| 名称 | 类型 | 必填项 | 描述 |
+| --- | --- | --- | --- |
+| options | Object | 是 | 配置对象 |
+| callback | Function | 是 | 回调函数 |
+
+#### options 对象属性
+
+| 名称 | 类型 | 必填项 | 描述 |
+| --- | --- | --- | --- |
+| Status | String | 否 | 视频状态，默认获取所有视频，多个可以用逗号分隔，如：Uploading,Normal，取值包括：Uploading(上传中)，UploadFail(上传失败)，UploadSucc(上传完成)，Transcoding(转码中)，TranscodeFail(转码失败)，Blocked(屏蔽)，Normal(正常) |
+| StartTime | String | 否 | CreationTime（创建时间）的开始时间，为开区间(大于开始时间)。日期格式按照ISO8601标准表示，并需要使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ 例如，2017-01-11T12:00:00Z（为北京时间2017年1月11日20点0分0秒） |
+| EndTime | String | 否 | CreationTime的结束时间，为闭区间(小于等于结束时间)。日期格式按照ISO8601标准表示，并需要使用UTC时间。格式为：YYYY-MM-DDThh:mm:ssZ 例如，2017-01-11T12:00:00Z（为北京时间2017年1月11日20点0分0秒）|
+| CateId | String | 否 | 视频分类ID |
+| PageNo | Number | 否 | 页号，默认1 |
+| PageSize | Number | 否 | 可选，默认10，最大不超过100 |
+| SortBy | String | 否 | 结果排序，范围：CreationTime:Desc、CreationTime:Asc，默认为CreationTime:Desc（即按创建时间倒序）|
+
+#### 返回参数
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| err | Object | 错误对象 |
+| result | Object | 结果对象 |
+
+#### result 对象
+
+| 名称 | 类型 | 描述 |
+| --- | --- | --- |
+| RequestId | String | 请求ID |
+| VideoList | Object | 视频信息对象，子属性`Video`为数组，数组项为单个视频信息对象 |
+| Total | Number | 视频总条数 |
 
 #### Video 对象
 
