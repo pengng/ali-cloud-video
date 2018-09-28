@@ -41,21 +41,21 @@ const ali = new AliCloudVideo({
 
 - 凭证
   - [getPlayAuth](#getplayauthvideoid-callback)	播放视频前获取播放地址和播放凭证
-     [getPlayAddress](#getplayaddressopt-callback)	获取视频播放地址
-     [getUploadAuth](#getuploadauthopt-callback)	上传视频前获取上传凭证和上传地址
-     [getUploadImageAuth](#getuploadimageauthopt-callback)	上传图片前先获取上传地址和上传凭证
-     [refreshUploadAuth](#refreshuploadauthvideoid-callback)	上传凭证失效后需刷新上传凭证
+  - [getPlayAddress](#getplayaddressopt-callback)	获取视频播放地址
+  - [getUploadAuth](#getuploadauthopt-callback)	上传视频前获取上传凭证和上传地址
+  - [getUploadImageAuth](#getuploadimageauthopt-callback)	上传图片前先获取上传地址和上传凭证
+  - [refreshUploadAuth](#refreshuploadauthvideoid-callback)	上传凭证失效后需刷新上传凭证
 - 视频
   - [uploadFile](#uploadfileopt-callback)	上传视频文件到视频点播服务器
-     [deleteFiles](#deletefilesidlist-callback)	删除上传的视频文件
-     [getVideoInfo](#getvideoinfovideoid-callback)	获取视频信息
-     [getVideoList](#getvideolistopt-callback)	获取视频信息列表，最多支持获取前5000条
-     [updateVideoInfo](#updatevideoinfoopt-callback)	更新视频信息。
+  - [deleteFiles](#deletefilesidlist-callback)	删除上传的视频文件
+  - [getVideoInfo](#getvideoinfovideoid-callback)	获取视频信息
+  - [getVideoList](#getvideolistopt-callback)	获取视频信息列表，最多支持获取前5000条
+  - [updateVideoInfo](#updatevideoinfoopt-callback)	更新视频信息。
 - 分类
   - [addCategory](#addcategoryopt-callback)	创建视频分类。
-     [getCategories](#getcategoriesopt-callback)	获取视频分类及其子分类。
-     [updateCategory](#updatecategoryopt-callback)	更新分类
-     [deleteCategory](#deletecategorycateid-callback)	删除分类
+  - [getCategories](#getcategoriesopt-callback)	获取视频分类及其子分类。
+  - [updateCategory](#updatecategoryopt-callback)	更新分类
+  - [deleteCategory](#deletecategorycateid-callback)	删除分类
 
 ### getPlayAuth(videoId, callback)
 
