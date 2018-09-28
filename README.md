@@ -44,7 +44,7 @@ const ali = new AliCloudVideo({
 #### 实例方法
 
 - 凭证
-  - <a href="#getPlayAuth(videoId, callback)">getPlayAuth</a>	播放视频前获取播放地址和播放凭证
+  - [getPlayAuth](#getplayauthvideoid-callback)	播放视频前获取播放地址和播放凭证
   - [getPlayAddress](#getPlayAddress(opt, callback))	获取视频播放地址
   - [getUploadAuth](#getUploadAuth(opt, callback))	上传视频前获取上传凭证和上传地址
   - [getUploadImageAuth](#getUploadImageAuth(opt, callback))	上传图片前先获取上传地址和上传凭证
