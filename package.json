@@ -1,24 +1,29 @@
 {
-  "name": "ali-cloud-video",
-  "version": "1.1.0",
-  "description": "Ali cloud video on demand SDK",
-  "main": "index.js",
-  "scripts": {
-    "test": "mocha"
-  },
-  "keywords": [
-    "阿里云",
-    "视频点播",
-    "sdk"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/pengng/ali-cloud-video.git"
-  },
-  "author": "pengng",
-  "license": "ISC",
-  "dependencies": {
-    "ali-oss": "^4.10.0",
-    "request-client": "^1.0.0"
-  }
+    "name": "ali-cloud-video",
+    "version": "1.1.1",
+    "description": "Ali cloud video on demand SDK",
+    "main": "index.js",
+    "scripts": {
+        "test": "test -f test/config.json || cp test/config.json.sample test/config.json && mocha -t 5000"
+    },
+    "keywords": [
+        "aliyun",
+        "VoD",
+        "video",
+        "阿里云",
+        "视频点播",
+        "sdk"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pengng/ali-cloud-video.git"
+    },
+    "author": "pengng",
+    "license": "ISC",
+    "dependencies": {
+        "ali-oss": "^4.10.0"
+    },
+    "devDependencies": {
+        "mocha": "^5.2.0"
+    }
 }

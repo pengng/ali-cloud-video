@@ -1,5 +1,5 @@
 # ali-cloud-video
-#### 阿里云视频点播SDK
+阿里云视频点播SDK
 
 ### Usage
 ```bash
@@ -20,8 +20,6 @@ ali.getPlayAuth(videoId, (err, result) => {
 })
 ```
 
-
-
 ### new AliCloudVideo(opt)
 
 - `opt` \<Object\>
@@ -39,29 +37,25 @@ const ali = new AliCloudVideo({
 })
 ```
 
-
-
 #### 实例方法
 
 - 凭证
   - [getPlayAuth](#getplayauthvideoid-callback)	播放视频前获取播放地址和播放凭证
-  - [getPlayAddress](#getplayaddressopt-callback)	获取视频播放地址
-  - [getUploadAuth](#getuploadauthopt-callback)	上传视频前获取上传凭证和上传地址
-  - [getUploadImageAuth](#getuploadimageauthopt-callback)	上传图片前先获取上传地址和上传凭证
-  - [refreshUploadAuth](#refreshuploadauthvideoid-callback)	上传凭证失效后需刷新上传凭证
+     [getPlayAddress](#getplayaddressopt-callback)	获取视频播放地址
+     [getUploadAuth](#getuploadauthopt-callback)	上传视频前获取上传凭证和上传地址
+     [getUploadImageAuth](#getuploadimageauthopt-callback)	上传图片前先获取上传地址和上传凭证
+     [refreshUploadAuth](#refreshuploadauthvideoid-callback)	上传凭证失效后需刷新上传凭证
 - 视频
   - [uploadFile](#uploadfileopt-callback)	上传视频文件到视频点播服务器
-  - [deleteFiles](#deletefilesidlist-callback)	删除上传的视频文件
-  - [getVideoInfo](#getvideoinfovideoid-callback)	获取视频信息
-  - [getVideoList](#getvideolistopt-callback)	获取视频信息列表，最多支持获取前5000条
-  - [updateVideoInfo](#updatevideoinfoopt-callback)	更新视频信息。
+     [deleteFiles](#deletefilesidlist-callback)	删除上传的视频文件
+     [getVideoInfo](#getvideoinfovideoid-callback)	获取视频信息
+     [getVideoList](#getvideolistopt-callback)	获取视频信息列表，最多支持获取前5000条
+     [updateVideoInfo](#updatevideoinfoopt-callback)	更新视频信息。
 - 分类
   - [addCategory](#addcategoryopt-callback)	创建视频分类。
-  - [getCategories](#getcategoriesopt-callback)	获取视频分类及其子分类。
-  - [updateCategory](#updatecategoryopt-callback)	更新分类
-  - [deleteCategory](#deletecategorycateid-callback)	删除分类
-
-
+     [getCategories](#getcategoriesopt-callback)	获取视频分类及其子分类。
+     [updateCategory](#updatecategoryopt-callback)	更新分类
+     [deleteCategory](#deletecategorycateid-callback)	删除分类
 
 ### getPlayAuth(videoId, callback)
 
@@ -74,12 +68,10 @@ const ali = new AliCloudVideo({
 const videoId = 'e51aa1941e3b46648f4812dbcf5c175d'
 // 获取视频的播放授权信息
 ali.getPlayAuth(videoId, (err, result) => {
-  	if (err) return console.error(err)
-	console.log(result)
+    if (err) return console.error(err)
+  console.log(result)
 })
 ```
-
-
 
 ### getPlayAddress(opt, callback)
 
@@ -95,19 +87,17 @@ ali.getPlayAuth(videoId, (err, result) => {
 const opt = { VideoId: 'e51aa1941e3b46648f4812dbcf5c175d' }
 // 获取视频的播放链接
 ali.getPlayAddress(opt, (err, result) => {
-  	if (err) return console.error(err)
-	console.log(result)
+    if (err) return console.error(err)
+  console.log(result)
 })
 ```
-
-
 
 ### getUploadAuth(opt, callback)
 
 - `opt` \<Object\>
   - `Title` \<string\> 视频标题，长度不超过128个字节，UTF8编码。默认生成为new_video_[timestamp]
   - `FileName` \<string\> 视频源文件名，必须带扩展名，且扩展名不区分大小写, 支持的扩展名参见[上传概述](https://help.aliyun.com/document_detail/55396.html?spm=5176.doc55407.2.1.xKk4gJ)的限制部分。默认为[Title].mp4
-  - `FileSize` \<string\> 视频文件大小，单位：字节。
+  - `FileSize` \<number\> 视频文件大小，单位：字节。
   - `Description` \<string\> 视频描述，长度不超过1024个字节，UTF8编码
   - `CoverUrl` \<string\> 自定义视频封面URL地址
   - `CateId` \<number\> 视频分类ID，请在“点播控制台-全局设置-分类管理”里编辑或查看分类的ID
@@ -123,12 +113,10 @@ ali.getPlayAddress(opt, (err, result) => {
 const opt = {}
 // 获取视频的上传凭证和上传地址
 ali.getUploadAuth(opt, (err, result) => {
-  	if (err) return console.error(err)
-	console.log(result)
+    if (err) return console.error(err)
+  console.log(result)
 })
 ```
-
-
 
 ### uploadFile(opt, callback)
 
@@ -152,12 +140,10 @@ const opt = {
 }
 
 ali.uploadFile(opt, (err, videoId) => {
-  	if (err) return console.error(err)
-	console.log(`videoId is ${videoId}`)
+    if (err) return console.error(err)
+  console.log(`videoId is ${videoId}`)
 })
 ```
-
-
 
 ### deleteFiles(idList, callback)
 
@@ -169,12 +155,10 @@ ali.uploadFile(opt, (err, videoId) => {
 const idList = ['e51aa1941e3b46648f4812dbcf5c175d']
 
 ali.deleteFiles(idList, (err) => {
-  	if (err) return console.error(err)
-	console.log('delete successful')
+    if (err) return console.error(err)
+  console.log('delete successful')
 })
 ```
-
-
 
 ### getVideoInfo(videoId, callback)
 
@@ -187,12 +171,10 @@ ali.deleteFiles(idList, (err) => {
 const videoId = 'e51aa1941e3b46648f4812dbcf5c175d'
 // 获取视频的播放授权信息
 ali.getVideoInfo(videoId, (err, result) => {
-  	if (err) return console.error(err)
-	console.log(result)
+    if (err) return console.error(err)
+  console.log(result)
 })
 ```
-
-
 
 ### getVideoList(opt, callback)
 
@@ -211,12 +193,10 @@ ali.getVideoInfo(videoId, (err, result) => {
 const opt = {}
 
 ali.getVideoList(opt, (err, result) => {
-  	if (err) return console.error(err)
-	console.log(result)
+    if (err) return console.error(err)
+  console.log(result)
 })
 ```
-
-
 
 ### updateVideoInfo(opt, callback)
 
@@ -237,12 +217,10 @@ const opt = {
 }
 
 ali.updateVideoInfo(opt, (err) => {
-  	if (err) return console.error(err)
-	console.log('updated successful')
+    if (err) return console.error(err)
+  console.log('updated successful')
 })
 ```
-
-
 
 ### addCategory(opt, callback)
 
@@ -256,12 +234,10 @@ ali.updateVideoInfo(opt, (err) => {
 const opt = { CateName: '新分类' }
 
 ali.addCategory(opt, (err) => {
-  	if (err) return console.error(err)
-	console.log('created successful')
+    if (err) return console.error(err)
+  console.log('created successful')
 })
 ```
-
-
 
 ### getCategories(opt, callback)
 
@@ -276,12 +252,10 @@ ali.addCategory(opt, (err) => {
 const opt = { PageSize: 20 }
 
 ali.getCategories(opt, (err, result) => {
-  	if (err) return console.error(err)
-	console.log(result)
+    if (err) return console.error(err)
+  console.log(result)
 })
 ```
-
-
 
 ### updateCategory(opt, callback)
 
@@ -295,12 +269,10 @@ ali.getCategories(opt, (err, result) => {
 const opt = { CateId: 'xxxx', CateName: '测试分类名' }
 
 ali.updateCategory(opt, (err) => {
-  	if (err) return console.error(err)
-	console.log('updated successful')
+    if (err) return console.error(err)
+  console.log('updated successful')
 })
 ```
-
-
 
 ### deleteCategory(cateId, callback)
 
@@ -312,12 +284,10 @@ ali.updateCategory(opt, (err) => {
 const cateId = 'xxx'
 
 ali.deleteCategory(cateId, (err) => {
-  	if (err) return console.error(err)
-	console.log('deleted successful')
+    if (err) return console.error(err)
+  console.log('deleted successful')
 })
 ```
-
-
 
 ### getUploadImageAuth(opt, callback)
 
@@ -337,12 +307,10 @@ ali.deleteCategory(cateId, (err) => {
 const opt = {}
 
 ali.getUploadImageAuth(opt, (err, result) => {
-  	if (err) return console.error(err)
-	console.log(result)
+    if (err) return console.error(err)
+  console.log(result)
 })
 ```
-
-
 
 ### refreshUploadAuth(videoId, callback)
 
@@ -354,7 +322,7 @@ ali.getUploadImageAuth(opt, (err, result) => {
 const videoId = 'e51aa1941e3b46648f4812dbcf5c175d'
 
 ali.refreshUploadAuth(videoId, (err, result) => {
-  	if (err) return console.error(err)
-	console.log(result)
+    if (err) return console.error(err)
+  console.log(result)
 })
 ```
