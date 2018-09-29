@@ -1,4 +1,5 @@
 {
-    "AccessKeyId": "",
-    "AccessKeySecret": ""
+    "AccessKeyId": "测试用的AccessKeyId",
+    "AccessKeySecret": "测试用的AccessKeySecret",
+    "FilePath": "测试用的视频文件"
 }

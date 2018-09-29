@@ -4,7 +4,7 @@ const conf = require('./config')
 const AliCloudVideo = require('../index')
 const ali = new AliCloudVideo(conf)
 
-describe('test sdk.js', function () {
+describe('测试视频', function () {
     let videoId = ''
     let videoId2 = ''
     let uploadAuth = ''
@@ -20,7 +20,7 @@ describe('test sdk.js', function () {
 
     it('上传视频文件', function (done) {
         let opt = {
-            FilePath: path.resolve(__dirname, 'test.mp4'),
+            FilePath: conf.FilePath,
             progress: p => {
                 assert(typeof p === 'number' && p >= 0 && p <= 1, '进度值有误')
             }
@@ -147,6 +147,63 @@ describe('test sdk.js', function () {
     it('删除视频文件', function (done) {
         let idList = [videoId, videoId2]
         ali.deleteFiles(idList, function (err) {
+            assert.ifError(err, '错误对象应为 null')
+            done()
+        })
+    })
+})
+
+describe('测试分类', function () {
+    let cateId = ''
+    
+    it('新增分类', function (done) {
+        let opt = {
+            CateName: '分类名'
+        }
+        ali.addCategory(opt, function (err, result) {
+            assert.ifError(err, '错误对象应为 null')
+            assert(typeof result === 'object', 'result 应该为对象')
+            assert(typeof result.Category === 'object', 'Category 应该为对象')
+            let { CateId, ParentId, CateName } = result.Category
+            assert(typeof CateId === 'number', 'CateId 应该为数字')
+            assert(ParentId === -1, 'ParentId 应等于 -1')
+            assert(CateName === opt.CateName, 'CateName 应该等于设置的 CateName')
+            cateId = CateId
+            done()
+        })
+    })
+
+    it('获取分类', function (done) {
+        let opt = {
+            CateId: cateId,
+            PageNo: 1,
+            PageSize: 20
+        }
+        ali.getCategories(opt, function (err, result) {
+            assert.ifError(err, '错误对象应为 null')
+            assert(typeof result === 'object', 'result 应该为对象')
+            let { SubTotal, SubCategories } = result
+            assert(SubTotal > 0, 'SubCategories 应该大于零')
+            assert(typeof SubCategories === 'object', 'SubCategories 应该为对象')
+            assert(Array.isArray(SubCategories.Category), 'Category 应该为数组')
+            assert(SubCategories.Category.length > 0, 'Category.length 应该大于零')
+            done()            
+        })
+    })
+
+    it('更新分类名', function (done) {
+        let opt = {
+            CateId: cateId,
+            CateName: '新的分类名'
+        }
+        ali.updateCategory(opt, function (err) {
+            assert.ifError(err, '错误对象应为 null')
+            done()            
+        })
+    })
+
+    it('删除分类', function (done) {
+        ali.deleteCategory(cateId, function (err, result) {
             assert.ifError(err, '错误对象应为 null')
             done()
         })
